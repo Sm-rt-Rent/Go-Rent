@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.Vhytor</groupId>
-	<artifactId>SmartRent</artifactId>
+	<artifactId>GoRent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SmartRent</name> <!-- FIX: was <n> which is not a valid tag -->
 	<description>This is a rental application with the idea of eradicating agent or middlemen to self touring the home</description>
@@ -76,7 +76,18 @@
 			<version>0.11.5</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- ── Email ──────────────────────────────────────────── -->
+
+        <!-- ── Images ──────────────────────────────────────────── -->
+		<!-- Source: https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http5 -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http5</artifactId>
+			<version>2.5.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+        <!-- ── Email ──────────────────────────────────────────── -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
@@ -106,6 +117,16 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!-- ── MongoDb ────────────────────────────────────────────────── -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
+
 
 		<!-- ── Dev Tools ────────────────────────────────────────────────── -->
 		<dependency>

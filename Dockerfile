@@ -9,10 +9,10 @@ RUN mvn clean package -DskipTests
 # Stage 2: Run the application
 FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-RUN addgroup -S smartrent && adduser -S smartrent -G smartrent
+RUN addgroup -S gorent && adduser -S gorent -G gorent
 COPY --from=build /app/target/*.jar app.jar
-RUN chown smartrent:smartrent app.jar
-USER smartrent
+RUN chown gorent:gorent app.jar
+USER gorent
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
