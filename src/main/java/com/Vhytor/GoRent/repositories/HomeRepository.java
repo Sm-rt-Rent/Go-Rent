@@ -13,6 +13,7 @@ import java.util.List;
 public interface HomeRepository extends JpaRepository<Home, Long> {
 
     List<Home> findByLandlord(User landlord);
+    List<Home> findByLandlord_UserId(Long userId);
 
     /**
      * Finds all properties within a given radius (in metres) of a coordinate.

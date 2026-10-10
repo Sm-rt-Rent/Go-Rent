@@ -11,4 +11,5 @@ public interface LandlordService {
     List<Home> getMyProperties(User landlord);
     List<ViewingRecord> getMyViewingRecords(long homeId, User landlord);
     Home createProperty(CreateHomeRequest request, User landlord);
+    void deleteProperty(Long homeId, User landlord);
 }

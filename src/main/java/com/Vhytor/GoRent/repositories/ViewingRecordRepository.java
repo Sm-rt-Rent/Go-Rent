@@ -13,4 +13,8 @@ public interface ViewingRecordRepository extends JpaRepository<ViewingRecord, Lo
     List<ViewingRecord> findByHomeHomeId(Long homeId);
 
     Optional<ViewingRecord> findByTransactionReference(String transactionReference);
+
+    boolean existsByHomeHomeIdAndPaidTrue(Long homeId);
+
+    void deleteByHomeHomeId(Long homeId);
 }

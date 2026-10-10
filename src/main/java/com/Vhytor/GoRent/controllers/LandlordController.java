@@ -82,6 +82,15 @@ public class LandlordController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/properties/{homeId}")
+    public ResponseEntity<Void> deleteProperty(
+            @PathVariable Long homeId,
+            Principal principal) {
+        User landlord = resolveUser(principal);
+        landlordService.deleteProperty(homeId, landlord);
+        return ResponseEntity.noContent().build();
+    }
+
     private User resolveUser(Principal principal) {
         return userRepository.findByUserEmail(principal.getName())
                 .orElseThrow(() -> new RuntimeException("User not found"));

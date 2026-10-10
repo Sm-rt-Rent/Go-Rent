@@ -39,6 +39,12 @@ public class GlobalExceptionHandler {
             return buildResponse(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
         }
 
+        @ExceptionHandler(PropertyHasViewingException.class)
+        public ResponseEntity<ApiErrorResponse> handlePropertyHasViewings(
+                PropertyHasViewingException ex, HttpServletRequest request) {
+            return buildResponse(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
+        }
+
         // ─── 401 Unauthorized ─────────────────────────────────────────────────────
         @ExceptionHandler(InvalidCredentialsException.class)
         public ResponseEntity<ApiErrorResponse> handleInvalidCredentials(
