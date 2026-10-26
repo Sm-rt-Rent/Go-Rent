@@ -1,4 +1,4 @@
-pipel ine {
+pipeline {
     agent any
 
     tools {
