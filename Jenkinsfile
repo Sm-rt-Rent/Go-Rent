@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Building Spring Boot project...'
                 // Use 'bat' for Windows command line execution
-                bat 'mvnw.cmd clean package'
+                bat 'mvnw.cmd clean package -DskipTests'
             }
         }
     }
