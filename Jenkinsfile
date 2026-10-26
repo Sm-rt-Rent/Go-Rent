@@ -1,55 +1,28 @@
 pipeline {
     agent any
 
-    tools {
-        // Must match the name configured under Manage Jenkins -> Tools -> JDK / Maven
-        jdk 'JDK_17'
-        maven 'Maven_3'
-    }
-
     stages {
         stage('Checkout') {
             steps {
                 echo 'Pulling source code from GitHub...'
-                // Jenkins automatically checks out code from your SCM repository
             }
         }
 
-        stage('Build') {
+        stage('Build & Test') {
             steps {
-                echo 'Building Spring Boot JAR package...'
-                // Clean and compile the code without running tests yet
-                sh 'mvn clean compile'
-                // Note: On Windows nodes using CMD/PowerShell, use: bat 'mvn clean compile'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running unit tests...'
-                sh 'mvn test'
-                // Windows alternative: bat 'mvn test'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                echo 'Packaging application into JAR...'
-                sh 'mvn package -DskipTests'
-                // Windows alternative: bat 'mvn package -DskipTests'
+                echo 'Building Spring Boot project...'
+                // Use 'bat' for Windows command line execution
+                bat 'mvn clean package'
             }
         }
     }
 
     post {
-        always {
-            echo 'Pipeline execution complete.'
-        }
         success {
-            echo 'Build and tests succeeded!'
+            echo 'Pipeline built successfully!'
         }
         failure {
-            echo 'Build failed. Please check the logs.'
+            echo 'Pipeline build failed.'
         }
     }
 }
