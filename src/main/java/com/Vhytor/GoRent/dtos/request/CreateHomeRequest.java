@@ -28,6 +28,21 @@ public class CreateHomeRequest {
     @NotNull(message = "Longitude is required")
     private Double longitude;
 
+    @NotNull(message = "Bedrooms is required")
+    private Integer bedrooms;
+
+    @NotNull(message = "Bathrooms is required")
+    private Integer bathrooms;
+
+    @NotNull(message = "Square feet is required")
+    private Integer squareFeet;
+
+    @NotBlank(message = "Pet policy is required")
+    private String petsAllowed;
+
+    @NotBlank(message = "Property details are required")
+    private String propertyDetails;
+
     // Getters and Setters
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
@@ -46,4 +61,20 @@ public class CreateHomeRequest {
 
     public Double getLongitude() { return longitude; }
     public void setLongitude(Double longitude) { this.longitude = longitude; }
+
+    // Getters and setters
+    public Integer getBedrooms() { return bedrooms; }
+    public void setBedrooms(Integer bedrooms) { this.bedrooms = bedrooms; }
+
+    public Integer getBathrooms() { return bathrooms; }
+    public void setBathrooms(Integer bathrooms) { this.bathrooms = bathrooms; }
+
+    public Integer getSquareFeet() { return squareFeet; }
+    public void setSquareFeet(Integer squareFeet) { this.squareFeet = squareFeet; }
+
+    public String getPetsAllowed() { return petsAllowed; }
+    public void setPetsAllowed(String petsAllowed) { this.petsAllowed = petsAllowed; }
+
+    public String getPropertyDetails() { return propertyDetails; }
+    public void setPropertyDetails(String propertyDetails) { this.propertyDetails = propertyDetails; }
 }

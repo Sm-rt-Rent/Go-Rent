@@ -76,6 +76,11 @@ public class LandlordServiceImpl implements LandlordService {
         home.setViewingFee(request.getViewingFee());
         home.setLatitude(request.getLatitude());
         home.setLongitude(request.getLongitude());
+        home.setBedrooms(request.getBedrooms());
+        home.setBathrooms(request.getBathrooms());
+        home.setSquareFeet(request.getSquareFeet());
+        home.setPetsAllowed(request.getPetsAllowed());
+        home.setPropertyDetails(request.getPropertyDetails());
         return homeRepository.save(home);
     }
 

@@ -41,6 +41,21 @@ public class Home {
     @JsonIgnoreProperties("home") // prevents infinite loop when serializing to JSON
     private List<HomePhoto> photos = new ArrayList<>();
 
+    @Column(nullable = false)
+    private Integer bedrooms;
+
+    @Column(nullable = false)
+    private Integer bathrooms;
+
+    @Column(nullable = false)
+    private Integer squareFeet;
+
+    @Column(nullable = false)
+    private String petsAllowed;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String propertyDetails;
+
     // Manual Getters and Setters
     public Long getHomeId() { return homeId; }
     public void setHomeId(Long homeId) { this.homeId = homeId; }
@@ -71,6 +86,21 @@ public class Home {
 
     public List<HomePhoto> getPhotos() { return photos; }
     public void setPhotos(List<HomePhoto> photos) { this.photos = photos; }
+
+    public Integer getBedrooms() { return bedrooms; }
+    public void setBedrooms(Integer bedrooms) { this.bedrooms = bedrooms; }
+
+    public Integer getBathrooms() { return bathrooms; }
+    public void setBathrooms(Integer bathrooms) { this.bathrooms = bathrooms; }
+
+    public Integer getSquareFeet() { return squareFeet; }
+    public void setSquareFeet(Integer squareFeet) { this.squareFeet = squareFeet; }
+
+    public String getPetsAllowed() { return petsAllowed; }
+    public void setPetsAllowed(String petsAllowed) { this.petsAllowed = petsAllowed;}
+
+    public String getPropertyDetails() { return propertyDetails; }
+    public void setPropertyDetails(String propertyDetails) { this.propertyDetails = propertyDetails;}
 }
 
 
