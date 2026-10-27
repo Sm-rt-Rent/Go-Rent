@@ -12,7 +12,7 @@
 	<groupId>com.Vhytor</groupId>
 	<artifactId>GoRent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SmartRent</name> <!-- FIX: was <n> which is not a valid tag -->
+	<name>GoRent</name> <!-- FIX: was <n> which is not a valid tag -->
 	<description>This is a rental application with the idea of eradicating agent or middlemen to self touring the home</description>
 
 	<properties>
