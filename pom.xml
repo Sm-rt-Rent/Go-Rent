@@ -13,7 +13,7 @@
 	<artifactId>GoRent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GoRent</name> <!-- FIX: was <n> which is not a valid tag -->
-	<description>This is a rental application with the idea of eradicating agent or middlemen to self touring the home</description>
+	<description>This is a rental application with the idea of eradicating agent or middlemen to self touring the home seamlessly and swiftly</description>
 
 	<properties>
 		<java.version>17</java.version>
