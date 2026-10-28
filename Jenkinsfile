@@ -18,9 +18,9 @@ pipeline {
         stage('Docker Deploy') {
                     steps {
                         echo 'Deploying application stack using Docker Compose...'
-                        // Bring down any old containers, rebuild the app image, and start everything fresh in the background
-                        bat 'docker compose down'
-                        bat 'docker compose up --build -d'
+                        // Use the absolute path to Docker on Windows
+                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" compose down'
+                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" compose up --build -d'
                     }
                 }
         }
