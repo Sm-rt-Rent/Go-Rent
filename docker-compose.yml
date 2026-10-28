@@ -1,0 +1,64 @@
+services:
+  # 1. THE DATABASE
+  gorent-db:
+    image: mysql:8.0
+    container_name: gorent-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: gorent
+      MYSQL_ROOT_PASSWORD: Chukwunyerem457
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  # 2. THE CACHE (New Redis Service)
+  gorent-redis:
+    image: redis:7-alpine
+    container_name: gorent-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # 3. THE APP
+  gorent-app:
+    build: .
+    container_name: gorent-backend
+    ports:
+      - "8081:8080"
+    depends_on:
+      gorent-db:
+        condition: service_healthy
+      gorent-redis:
+        condition: service_healthy
+    restart: unless-stopped
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://gorent-db:3306/gorent
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Chukwunyerem457
+      # Redis Connection Info
+      - SPRING_DATA_REDIS_HOST=gorent-redis
+      - SPRING_DATA_REDIS_PORT=6379
+      # Secrets
+      - JWT_SECRET=${JWT_SECRET}
+      - PAY_STACK_SECRET=${PAY_STACK_SECRET}
+      - BREVO_SMTP_LOGIN=${BREVO_SMTP_LOGIN}
+      - BREVO_SMTP_PASSWORD=${BREVO_SMTP_KEY}
+      - MAIL_SENDER=${MAIL_SENDER}
+      # Frontend URL — Added: used by Paystack callback redirect
+      - FRONTEND_URL=${FRONTEND_URL}
+volumes:
+  mysql-data:
+  redis-data:
