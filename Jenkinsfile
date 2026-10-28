@@ -10,9 +10,10 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                echo 'Building Spring Boot project...'
-                // Use 'bat' for Windows command line execution
-                bat 'mvnw.cmd clean package -DskipTests'
+                echo 'Fixing wrapper line endings and building project...'
+                                // Automatically fix line endings for Windows batch wrapper
+                                bat 'powershell -Command "(Get-Content mvnw.cmd -Raw) -replace \"`r`n?\", \"`r`n\" | Set-Content mvnw.cmd -NoNewline"'
+                                bat 'mvnw.cmd clean package -DskipTests'
             }
         }
         stage('Docker Deploy') {
