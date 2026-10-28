@@ -18,9 +18,9 @@ pipeline {
         stage('Docker Deploy') {
                     steps {
                         echo 'Deploying application stack using Docker Compose...'
-                        // Use the absolute path to Docker on Windows
-                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" -f docker-compose.yml compose down || exit 0'
-                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" -f docker-compose.yml compose up --build -d'
+                        // Correct syntax: 'docker compose -f file.yml down'
+                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" compose -f docker-compose.yml down || exit 0'
+                        bat '"C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.exe" compose -f docker-compose.yml up --build -d'
                     }
                 }
         }
